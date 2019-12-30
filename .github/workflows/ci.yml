@@ -38,3 +38,17 @@ jobs:
         token: ${{ secrets.CODECOV_TOKEN }}
         file: coverage.txt
         name: ${{ matrix.platform }}-go${{ matrix.go }}
+
+  lint-markdown:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v1
+    - name: Set up Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12'
+    - name: Install Markdown linter
+      run: npm install -g markdownlint-cli
+    - name: Lint Markdown
+      run: markdownlint .
