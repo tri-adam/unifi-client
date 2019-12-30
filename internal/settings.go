@@ -25,7 +25,6 @@ type ClientSettings struct {
 
 // Validate returns an error if s is invalid.
 func (s *ClientSettings) Validate() error {
-
 	// If credentials are supplied, both a username and password must be suplied.
 	if c := s.Credentials; c != nil {
 		if c.Username == "" {

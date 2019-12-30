@@ -39,16 +39,30 @@ jobs:
         file: coverage.txt
         name: ${{ matrix.platform }}-go${{ matrix.go }}
 
+  lint-source:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set up Go
+      uses: actions/setup-go@v1
+      with:
+        go-version: '1.13.x'
+    - name: Install linter
+      run: curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.22.2
+    - name: Checkout code
+      uses: actions/checkout@v1
+    - name: Lint source
+      run: $(go env GOPATH)/bin/golangci-lint run
+
   lint-markdown:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v1
     - name: Set up Node
       uses: actions/setup-node@v1
       with:
         node-version: '12'
-    - name: Install Markdown linter
+    - name: Install linter
       run: npm install -g markdownlint-cli
+    - name: Checkout code
+      uses: actions/checkout@v1
     - name: Lint Markdown
       run: markdownlint .
