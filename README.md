@@ -1,6 +1,7 @@
 # UniFi Go Client
 
 [![GoDoc](https://godoc.org/github.com/tri-adam/unifi-client?status.svg)](https://godoc.org/github.com/tri-adam/unifi-client)
+[![CI Workflow](https://github.com/tri-adam/unifi-client/workflows/ci/badge.svg)](https://github.com/tri-adam/unifi-client/actions)
 [![Go Report Card](https://goreportcard.com/badge/github.com/tri-adam/unifi-client)](https://goreportcard.com/report/github.com/tri-adam/unifi-client)
 
 A Go client for the Ubiquiti UniFi Controller.
